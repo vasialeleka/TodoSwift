@@ -10,6 +10,11 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    
+    @IBAction func pushAddAction(_ sender: Any) {
+        addItem(todoItem: "new")
+        tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,6 +52,19 @@ class TableViewController: UITableViewController {
         return cell
     }
  
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            removeItem(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }else if editingStyle == .insert{
+            
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

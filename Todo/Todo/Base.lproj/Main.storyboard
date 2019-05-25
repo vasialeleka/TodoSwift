@@ -40,7 +40,16 @@
                             <outlet property="delegate" destination="aOf-pz-OhV" id="vcd-vA-u9B"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todo List" id="EY2-l6-XdG"/>
+                    <navigationItem key="navigationItem" title="Todo List" id="EY2-l6-XdG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7Tf-EI-DGS">
+                            <connections>
+                                <action selector="pushAddAction:" destination="aOf-pz-OhV" id="MTh-9v-BM1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="z50-MY-Y5B" id="jcA-Yd-EPJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgq-I6-zUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
