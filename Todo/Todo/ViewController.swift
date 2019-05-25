@@ -24,6 +24,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      return data.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(data[indexPath.row])
+    }
+    
+    
    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
