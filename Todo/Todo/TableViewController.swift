@@ -47,8 +47,14 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = TodoList[indexPath.row]
-
+     
+            let currentItem = TodoList[indexPath.row]
+             cell.textLabel?.text = currentItem["Name"] as? String
+        if currentItem["isCompleted"] as! Bool{
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
         return cell
     }
  
@@ -56,6 +62,17 @@ class TableViewController: UITableViewController {
         return true
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if changeState(at: indexPath.row){
+             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            
+        }
+   
+    }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             removeItem(at: indexPath.row)
